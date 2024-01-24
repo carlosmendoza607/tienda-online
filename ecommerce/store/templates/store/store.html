@@ -1,0 +1,22 @@
+{% extends "store/main.html" %}
+{% load static %}
+{% block content %} 
+
+<div class="store-container" style="background-image: url('{% static 'images/portada.jpg' %}');">
+</div>
+
+<div class = "row">
+    {%for product in products%} 
+        <div class="col-lg-3">
+        <div class="card" style="width: 21,7rem;"> 
+            <img class="thumbnail" src="{{ product.image.url }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>   
+                <p class= "card-text"> <strong>${{product.price|floatformat:2}}</strong></p>
+                <buttom data-product="{{product.id}}" data-action ="add"  class="btn btn-primary update-cart"> Añadir al Carro</buttom>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}
